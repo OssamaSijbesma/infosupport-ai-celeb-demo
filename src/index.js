@@ -8,6 +8,13 @@ import "./styles.css";
 class App extends React.Component {
   videoRef = React.createRef();
   canvasRef = React.createRef();
+  photoRef = React.createRef();
+
+  // default size snap er de ballen van 🤔
+  dimensions = {
+    width: 640,
+    height: 480
+  }
 
   componentDidMount() {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -15,7 +22,9 @@ class App extends React.Component {
         .getUserMedia({
           audio: false,
           video: {
-            facingMode: "user"
+            facingMode: "user",
+            width: this.dimensions.width,
+            height: this.dimensions.height
           }
         })
         .then(stream => {
@@ -48,10 +57,10 @@ class App extends React.Component {
   };
 
   renderPredictions = predictions => {
+    const font = "16px sans-serif";
     const ctx = this.canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     // Font options.
-    const font = "16px sans-serif";
     ctx.font = font;
     ctx.textBaseline = "top";
     predictions.forEach(prediction => {
@@ -79,25 +88,45 @@ class App extends React.Component {
     });
   };
 
+  makePicture = () => {
+    const ctx = this.photoRef.current.getContext("2d");
+    ctx.drawImage(this.videoRef.current, 0, 0);
+    let data = this.photoRef.current.toDataURL("image/png");
+    console.log(data);
+    console.log(data.replace(/^data:image\/(png|jpg);base64,/, ""));
+    setTimeout( function() {
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+    }, 500);
+  };
+
   render() {
     return (
-      <div>
-        <video
-          className="size"
-          autoPlay
-          playsInline
-          muted
-          ref={this.videoRef}
-          width="600"
-          height="500"
-        />
-        <canvas
-          className="size"
-          ref={this.canvasRef}
-          width="600"
-          height="500"
-        />
-      </div>
+      <section>
+        <div className="wrapper">
+          <div className="frame-wrapper">
+            <video
+              className="frame"
+              autoPlay
+              ref={this.videoRef}
+              height={`${this.dimensions.height}px`}
+              width={`${this.dimensions.width}px`}
+            />
+            <canvas
+              className="frame"
+              ref={this.canvasRef}
+              height={`${this.dimensions.height}px`}
+              width={`${this.dimensions.width}px`}
+            />
+            <canvas
+              className="frame"
+              ref={this.photoRef}
+              height={`${this.dimensions.height}px`}
+              width={`${this.dimensions.width}px`}
+            />
+          </div>
+        <button onClick={this.makePicture}>Smile! <span role="img">📸</span></button>
+        </div>
+      </section>
     );
   }
 }

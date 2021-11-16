@@ -1,5 +1,22 @@
-.size {
+.frame {
 	position: fixed;
 	top: 0;
 	left: 0;
+}
+
+.frame-wrapper {
+	display: flexbox;
+	width: 640px;
+	height: 480px;
+}
+
+button {
+	text-transform: uppercase;
+	background-color: aliceblue;
+	border: 1px solid blue;
+	border-radius: 2px;
+	padding: 12px;
+}
+button:hover {
+	background-color: rgb(225, 239, 252);
 }
