@@ -91,9 +91,30 @@ class App extends React.Component {
   makePicture = () => {
     const ctx = this.photoRef.current.getContext("2d");
     ctx.drawImage(this.videoRef.current, 0, 0);
-    let data = this.photoRef.current.toDataURL("image/png");
-    console.log(data);
-    console.log(data.replace(/^data:image\/(png|jpg);base64,/, ""));
+    this.photoRef.current.toBlob((blob) => {
+      fetch('https://westeurope.api.cognitive.microsoft.com/vision/v3.2/analyze?visualFeatures=Faces&details=Celebrities&language=en&model-version=latest', {
+        method: 'POST',  
+        headers: {    
+          Accept: 'application/json',    
+          'Content-Type': 'application/octet-stream' , 
+          'Ocp-Apim-Subscription-Key': 'API KEY HERE!!!'
+        },  
+        body: blob
+      }).then(response =>response.json()).then(data => {
+        console.log('Call success:', data);
+        if (!data.error){
+          const celeb = data.categories.find(cat => cat.name === "people_");
+          if(celeb && celeb.detail.celebrities[0]) {
+            ReactDOM.render(celeb.detail.celebrities[0].name, document.getElementById('celebirty'));
+            ReactDOM.render(celeb.detail.celebrities[0].confidence, document.getElementById('confidence'));
+          }
+          if(data.faces && data.faces[0].age)
+          ReactDOM.render(data.faces[0].age, document.getElementById('age'));
+        }
+      });
+    })
+
+    
     setTimeout( function() {
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     }, 500);
@@ -102,6 +123,7 @@ class App extends React.Component {
   render() {
     return (
       <section>
+        <h1>Celebrity Matcher</h1>
         <div className="wrapper">
           <div className="frame-wrapper">
             <video
@@ -124,7 +146,13 @@ class App extends React.Component {
               width={`${this.dimensions.width}px`}
             />
           </div>
-        <button onClick={this.makePicture}>Smile! <span role="img">📸</span></button>
+          <div className="info">
+            <img className="logo" src="https://www.infosupport.com/wp-content/uploads/Info-Support-30cm-300DPI-PNG.png" />
+            <h2 id="celebirty"></h2>
+            <div>confidence: <span id="confidence"></span></div>
+            <div>age: <span id="age"></span></div>
+            <button onClick={this.makePicture}>Match <span role="img">📸</span></button>
+          </div>
         </div>
       </section>
     );
