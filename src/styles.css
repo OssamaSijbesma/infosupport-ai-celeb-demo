@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Shippori+Antique&display=swap');
 
 body {
 	background-color: #150444;
@@ -16,30 +16,57 @@ section {
 	flex-direction: column;
 }
 
+h1,
+h2 {
+	font-family: 'Sacramento', cursive;
+}
+
 h1 {
 	color: #fff;
 	font-size: 48px;
-	font-family: 'Sacramento';
 	margin-bottom: 48px;
+}
+
+h2 {
+	text-align: center;
+	font-size: 36px;
+	margin: 0;
 }
 
 button {
 	background-color: #ffffff;
-	font-family: 'Sacramento';
+	font-family: 'Sacramento', cursive;
 	font-size: 28px;
 	padding: 6px;
 	margin: 24px;
 	border: 2px solid #000;
 	border-radius: 4px;
+	width: 84%;
 }
+
 button:hover {
 	background-color: rgb(225, 239, 252);
 }
+
+p {
+	font-family: 'Shippori Antique', sans-serif;
+	text-align: center;
+	margin: 8px;
+}
+
 .logo {
 	width: 240px;
 	margin: 24px;
-	/* filter: invert(100%); */
 }
+
+.celeb {
+	width: 300px;
+	height: 250px;
+	/* object-fit: scale-down; */
+	object-fit: cover;
+	object-position: top;
+}
+
 .wrapper {
 	display: flex;
 	align-items: initial;
@@ -47,12 +74,16 @@ button:hover {
 	flex-direction: row;
 	gap: 62px;
 }
+
 .info {
 	background-color: #f9f9ff;
 	border-radius: 2px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	justify-content: space-between;
+	max-width: 300px;
+	width: 300px;
 }
 
 .frame {
