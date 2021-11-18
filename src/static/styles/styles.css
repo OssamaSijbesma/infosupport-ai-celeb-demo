@@ -68,6 +68,7 @@ p {
 }
 
 .wrapper {
+	width: 640px; height: 480px; 
 	display: flex;
 	align-items: initial;
 	justify-content: center;
