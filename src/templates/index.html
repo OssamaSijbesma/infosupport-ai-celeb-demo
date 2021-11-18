@@ -7,18 +7,18 @@
     <body>
         <section>
             <h1>Celebrity Matcher</h1>
-            <div className="wrapper">
-                <div className="frame-wrapper">
+            <div class="wrapper">
+                <div class="frame-wrapper">
                     <img src="{{ url_for('video_feed') }}" />
                 </div>
-                <div className="info">
+                <div class="info">
                     {% if g.show_results %}
-                        <img className="celeb" alt="celebrity"/>
+                        <img class="celeb" alt="celebrity"/>
                         <h2 id="celebrity">testname</h2>
                         <p>confidence: <span id="confidence"></span></p>
                         <p>predicted age: <span id="age"></span></p>
                     {% else %}
-                        <img className="logo" alt="logo InfoSupport" src="https://www.infosupport.com/wp-content/uploads/Info-Support-30cm-300DPI-PNG.png" />
+                        <img class="logo" alt="logo InfoSupport" src="https://www.infosupport.com/wp-content/uploads/Info-Support-30cm-300DPI-PNG.png" />
                         <p>No match found <span role="img" aria-label="sad">😔</span></p> 
                     {% endif %}
                     <button>Match<span role="img" aria-label="picture">📸</span></button>
