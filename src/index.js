@@ -105,7 +105,7 @@ class App extends React.Component {
         headers: {    
           Accept: 'application/json',    
           'Content-Type': 'application/octet-stream' , 
-          'Ocp-Apim-Subscription-Key': 'f53fdf48a3e5473199dd6ed4d1cb9099'
+          'Ocp-Apim-Subscription-Key': 'KEY HERE'
         },  
         body: blob
       }).then(response =>response.json()).then(data => {
