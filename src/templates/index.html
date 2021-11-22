@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Video Stream</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/styles.css') }}">
+    </head>
+    <body>
+        <section>
+            <h1><a href="/">Celebrity Matcher</a></h1>
+            <div class="wrapper">
+                <div class="frame-wrapper">
+                    <img src="{{ url_for('video_feed') }}" />
+                </div>
+                <div class="info">
+                    {% if g.show_results %}
+                        {% for item in data %}
+                            <img src="{{item.img_src}}" class="celeb" alt="celebrity"/>
+                            <h2 id="celebrity">{{item.name}}</h2>
+                            <p>Look a-like factor: <span id="confidence">{{item.conf}}%</span></p>
+                        {% endfor %}
+                    {% else %}
+                        <img class="logo" alt="logo InfoSupport" src="https://www.infosupport.com/wp-content/uploads/Info-Support-30cm-300DPI-PNG.png" />
+                        {% if g.exception %}
+                            <p>Unfortunately something broke, could you try again?<span role="img" aria-label="sad">😔</span></p> 
+                        {% else %}
+                            <p>No match found <span role="img" aria-label="sad">😔</span></p> 
+                        {% endif %}
+                    {% endif %}
+                    <form action="{{ url_for('predict')}}">
+                        <button type="submit">Match<span role="img" aria-label="picture">📸</span></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
