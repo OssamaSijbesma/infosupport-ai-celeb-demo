@@ -6,7 +6,6 @@
 '''
 
 
-
 import numpy as np
 from keras import backend as K
 from keras.utils.data_utils import get_file
