@@ -4,12 +4,10 @@ class VideoCamera(object):
 
     def __init__(self):
         self.video = cv2.VideoCapture(0)
-        self.face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-
+        self.face_cascade = cv2.CascadeClassifier('resources/haarcascade_frontalface_default.xml')
 
     def __del__(self):
         self.video.release()        
-
 
     def get_frame(self):
         ret, frame = self.video.read()
@@ -23,3 +21,7 @@ class VideoCamera(object):
 
         ret, jpeg = cv2.imencode('.jpg', frame)
         return jpeg.tobytes()
+
+    def get_raw_frame(self): 
+        _, frame = self.video.read()
+        return frame
