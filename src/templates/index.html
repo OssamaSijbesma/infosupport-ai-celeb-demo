@@ -14,15 +14,9 @@
                 <div class="info">
                     {% if g.show_results %}
                         {% for item in data %}
-                            {% if item.ref_pic %}
-                                <img src="data:image/jpeg;base64,{{item.img_src}}" class="celeb" alt="celebrity"/>
-                                <h2 id="celebrity">{{item.name}}</h2>
-                                <p>Look a-like factor: <span id="confidence">{{item.conf}}%</span></p>
-                            {% else %}
-                                <img src="{{item.img_src}}" class="celeb" alt="celebrity"/>
-                                <h2 id="celebrity">{{item.name}}</h2>
-                                <p>Look a-like factor: <span id="confidence">{{item.conf}}%</span></p>
-                            {% endif %}
+                            <img src="{{item.img_src}}" class="celeb" alt="celebrity"/>
+                            <h2 id="celebrity">{{item.name}}</h2>
+                            <p>Look a-like factor: <span id="confidence">{{item.conf}}%</span></p>
                         {% endfor %}
                     {% else %}
                         <img class="logo" alt="logo InfoSupport" src="https://www.infosupport.com/wp-content/uploads/Info-Support-30cm-300DPI-PNG.png" />

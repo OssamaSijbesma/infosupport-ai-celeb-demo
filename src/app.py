@@ -20,46 +20,46 @@ def index():
 @app.route('/video_feed')
 def video_feed():
     return Response(gen(video_stream),
-                mimetype='multipart/x-mixed-replace; boundary=frame')
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 @app.route('/predict')
-def predict(): 
+def predict():
     g.show_results = True
     data = []
-    try: 
+    try:
         frame = video_stream.get_raw_frame()
         frame_with_bbox = video_stream.get_frame()
         img_with_bbox = base64.b64encode(frame_with_bbox)
-        data.append( 
-            {
-                'name': "It's you!", 
-                'ref_pic': True, 
-                'conf': 100, 
-                'img_src': img_with_bbox.decode('utf-8')
-            }
-        )
+        # data.append(
+        #     {
+        #         'name': "It's you!",
+        #         'ref_pic': True,
+        #         'conf': 100,
+        #         'img_src': img_with_bbox.decode('utf-8')
+        #     }
+        # )
         img = np.asarray(bytearray(frame), dtype='uint8')
         img = cv2.imdecode(img, cv2.IMREAD_COLOR)
         predictions = predict_from_img(frame)[0]
-        predictions = predictions[0:3]
+        predictions = predictions[0:1]
 
-        for pred in predictions: 
+        for pred in predictions:
             name, conf = pred
             name = name.split(" ")[-1].strip("'").replace('_', ' ')
             img_url = get_celebrity_image_url(name)
             data.append(
                 {
                     'name': name,
-                    'ref_pic': False, 
-                    'conf': round(conf*100, 1), 
+                    'ref_pic': False,
+                    'conf': round(conf*100, 1),
                     'img_src': img_url
                 }
             )
-    except Exception: 
+    except Exception:
         g.exception = True
         g.show_results = False
-    
+
     return render_template('index.html', data=data)
 
 
