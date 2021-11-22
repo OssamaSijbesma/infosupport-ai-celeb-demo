@@ -6,22 +6,35 @@
     </head>
     <body>
         <section>
-            <h1>Celebrity Matcher</h1>
+            <h1><a href="/">Celebrity Matcher</a></h1>
             <div class="wrapper">
                 <div class="frame-wrapper">
                     <img src="{{ url_for('video_feed') }}" />
                 </div>
                 <div class="info">
                     {% if g.show_results %}
-                        <img class="celeb" alt="celebrity"/>
-                        <h2 id="celebrity">testname</h2>
-                        <p>confidence: <span id="confidence"></span></p>
-                        <p>predicted age: <span id="age"></span></p>
+                        {% for item in data %}
+                            {% if item.ref_pic %}
+                                <img src="data:image/jpeg;base64,{{item.img_src}}" class="celeb" alt="celebrity"/>
+                                <h2 id="celebrity">{{item.name}}</h2>
+                                <p>Look a-like factor: <span id="confidence">{{item.conf}}%</span></p>
+                            {% else %}
+                                <img src="{{item.img_src}}" class="celeb" alt="celebrity"/>
+                                <h2 id="celebrity">{{item.name}}</h2>
+                                <p>Look a-like factor: <span id="confidence">{{item.conf}}%</span></p>
+                            {% endif %}
+                        {% endfor %}
                     {% else %}
                         <img class="logo" alt="logo InfoSupport" src="https://www.infosupport.com/wp-content/uploads/Info-Support-30cm-300DPI-PNG.png" />
-                        <p>No match found <span role="img" aria-label="sad">😔</span></p> 
+                        {% if g.exception %}
+                            <p>Unfortunately something broke, could you try again?<span role="img" aria-label="sad">😔</span></p> 
+                        {% else %}
+                            <p>No match found <span role="img" aria-label="sad">😔</span></p> 
+                        {% endif %}
                     {% endif %}
-                    <button>Match<span role="img" aria-label="picture">📸</span></button>
+                    <form action="{{ url_for('predict')}}">
+                        <button type="submit">Match<span role="img" aria-label="picture">📸</span></button>
+                    </form>
                 </div>
             </div>
         </section>
