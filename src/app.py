@@ -25,24 +25,13 @@ def video_feed():
 
 @app.route('/predict')
 def predict():
-    g.show_results = True
     data = []
     try:
         frame = video_stream.get_raw_frame()
-        frame_with_bbox = video_stream.get_frame()
-        img_with_bbox = base64.b64encode(frame_with_bbox)
-        # data.append(
-        #     {
-        #         'name': "It's you!",
-        #         'ref_pic': True,
-        #         'conf': 100,
-        #         'img_src': img_with_bbox.decode('utf-8')
-        #     }
-        # )
         img = np.asarray(bytearray(frame), dtype='uint8')
         img = cv2.imdecode(img, cv2.IMREAD_COLOR)
         predictions = predict_from_img(frame)[0]
-        predictions = predictions[0:1]
+        predictions = predictions[0:3]
 
         for pred in predictions:
             name, conf = pred
@@ -56,11 +45,11 @@ def predict():
                     'img_src': img_url
                 }
             )
-    except Exception:
+    except Exception as e:
         g.exception = True
-        g.show_results = False
+        g.message = e
 
-    return render_template('index.html', data=data)
+    return render_template('result.html', data=data)
 
 
 def gen(camera):

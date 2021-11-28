@@ -2,8 +2,9 @@ from google_images_download import google_images_download
 
 
 def get_celebrity_image_url(name):
+    name = name.encode(encoding='ascii', errors='ignore')
     response = google_images_download.googleimagesdownload()
-    arguments = {'keywords': f"{name}", 'limit': 5,
+    arguments = {'keywords': f"{name}", 'limit': 3,
                  'print_urls': True, 'no_download': True}
     paths = response.download(arguments)
 

@@ -50,7 +50,7 @@ def preprocess_face(face):
 
 
 def predict(face_pp, model=None):
-    model = VGGFace(model='resnet50') if model is None else model
+    model = VGGFace(model='senet50') if model is None else model
     return model.predict(face_pp)
 
 
