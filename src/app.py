@@ -4,7 +4,7 @@ from flask import Flask, render_template, Response, g, request
 import numpy as np
 from camera import VideoCamera
 from predict import predict_from_img
-from google_images import get_celebrity_image_url
+from qwant_images import get_celebrity_image_url
 import base64
 
 app = Flask(__name__)

@@ -24,7 +24,7 @@ h2 {
 h1 {
 	color: #fff;
 	font-size: 48px;
-	margin-bottom: 48px;
+	margin-bottom: 24px;
 }
 
 h2 {
@@ -68,6 +68,18 @@ a {
 	background-color: #fff;
 	border-radius: 4px;
 }
+.repeat-button {
+	background-color: #ffffff;
+	font-family: 'Sacramento', cursive;
+	font-size: 28px;
+	padding: 12px;
+	border: 2px solid #000;
+	border-radius: 4px;
+	margin-top: 24px;
+}
+.repeat-button:hover {
+	background-color: rgb(225, 239, 252);
+}
 
 .result-wrapper {
 	display: flex;
@@ -99,6 +111,7 @@ a {
 	justify-content: center;
 	flex-direction: row;
 	gap: 62px;
+	margin-top: 24px;
 }
 
 .message {

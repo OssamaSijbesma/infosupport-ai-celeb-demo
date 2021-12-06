@@ -79,4 +79,4 @@ def predict_from_img(img, face_detector=None, model=None):
 
 # URL = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Channing_Tatum_by_Gage_Skidmore_3.jpg/330px-Channing_Tatum_by_Gage_Skidmore_3.jpg"
 detector = MTCNN()
-model = VGGFace(model='resnet50')
+model = VGGFace(model='senet50')
