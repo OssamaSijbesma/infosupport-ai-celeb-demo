@@ -19,7 +19,6 @@ async def predict(file: bytes = File()):
     image_raw = np.asarray(bytearray(file), dtype='uint8')
     image = cv2.imdecode(image_raw, cv2.IMREAD_COLOR)
     results = predict_celeb(image)[0]
-    print(results)
 
     for name, confidence in results[0:3]:
         name = name.split(" ")[-1].strip("'").replace('_', ' ')
