@@ -4,11 +4,16 @@ import * as tf from '@tensorflow/tfjs';
 import Webcam from "react-webcam";
 import './InfoSupport.css';
 
+import ModalCelebs from '../modal-celebs/ModalCelebs';
+
 function InfoSupport() {
   const webcamRef = useRef(null);
+  const modalRef = useRef(null);
   const [videoWidth] = useState(640);
   const [videoHeight] = useState(480);
   const [model, setModel] = useState();
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const videoConstraints = {
     height: 480,
@@ -91,6 +96,7 @@ function InfoSupport() {
   }
 
   async function predictCeleb() {
+    setLoading(true);
     const image = webcamRef.current.getScreenshot();
     const imageBlob = await fetch(image).then(response => response.blob());
     const payload = new FormData();
@@ -102,14 +108,21 @@ function InfoSupport() {
         'Accept': 'application/json',
       },
       body: payload
-    }).then(result => console.log(result));
+    })
+    .then(response => response.json())
+    .then(predictions => {
+      console.log(predictions);
+      setResults(predictions);     
+      modalRef.current.openModal();
+    })
+    .finally(() => setLoading(false));
   }
 
   return (
     <section>
-        <h1><a href="/infosupport">Celebrity Matcher</a></h1>
-        <div class="wrapper">
-            <div class="frame-wrapper">
+        <h1><a href="/">Celebrity Matcher</a></h1>
+        <div className='wrapper'>
+            <div className='frame-wrapper'>
               <Webcam
                 audio={false}
                 id="cameraOutput"
@@ -125,14 +138,17 @@ function InfoSupport() {
                 style={{ backgroundColor: "transparent" }}
               />
             </div>
-            <div class="sidebar">
-                <img class="logo" alt="logo InfoSupport" src="https://www.infosupport.com/wp-content/uploads/Info-Support-30cm-300DPI-PNG.png" />
+            <div className='sidebar'>
+                <img className='logo' alt="logo InfoSupport" src="https://www.infosupport.com/wp-content/uploads/Info-Support-30cm-300DPI-PNG.png" />
                 <form>
-                    <button type="button" variant={"contained"} onClick={() => { predictCeleb(); }}
+                    <button className='btn-default' type="button" variant={"contained"} onClick={() => { predictCeleb(); }}
                 >Match <span role="img" aria-label="picture">📸</span></button>
                 </form>
+                <div className='loader'style={{ visibility: loading ? "visible" : "hidden" }}>Loading...</div>
             </div>
         </div>
+
+        <ModalCelebs results={results}  ref={modalRef}/>
     </section>
   );
 }

@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import App from './routes/App';
-import Aigency from './routes/aigency/Aigency'
-import InfoSupport from './routes/info-support/InfoSupport'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,8 +11,6 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="aigency" element={<Aigency />} />
-        <Route path="infosupport" element={<InfoSupport />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

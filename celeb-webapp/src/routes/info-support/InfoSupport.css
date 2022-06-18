@@ -17,7 +17,8 @@ section {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: 'Sacramento', cursive;
 }
 
@@ -26,8 +27,14 @@ h1 {
   font-size: 48px;
   margin-bottom: 24px;
 }
+h2{
+  color: #fff;
+  font-size: 36px;
+  margin-bottom: 24px;
+  text-align: center;
+}
 
-h2 {
+h3 {
   text-align: center;
   font-size: 36px;
   margin: 0;
@@ -35,23 +42,28 @@ h2 {
   margin-bottom: 12px;
 }
 
-button {
-  background-color: #ffffff;
+button{
   font-family: 'Sacramento', cursive;
-  font-size: 28px;
   padding: 12px;
+}
+
+.btn-default {
+  background-color: #ffffff;
+  font-size: 28px;
   border: 2px solid #000;
   border-radius: 4px;
   width: 100%;
   margin-top: 24px;
 }
+
+.btn-default:hover {
+  background-color: rgb(225, 239, 252);
+}
+
 canvas, video{
   position: absolute;
 }
 
-button:hover {
-  background-color: rgb(225, 239, 252);
-}
 
 p {
   font-family: 'Shippori Antique', sans-serif;
@@ -94,14 +106,7 @@ a {
   gap: 24px;
 }
 
-.celeb {
-  width: 350px;
-  height: 300px;
-  /* object-fit: scale-down; */
-  object-fit: cover;
-  object-position: top;
-  border-radius: 4px 4px 0 0;
-}
+
 
 .result {
   border-radius: 4px;
@@ -155,5 +160,78 @@ a {
   0% {
     box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #3e13fe,
       0 0 10px #3e13fe, 0 0 13px #3e13fe, 0 0 16px #3e13fe, 0 0 20px #3e13fe;
+  }
+}
+
+
+/* Loader */
+
+.loader,
+.loader:before,
+.loader:after {
+  background: #ffffff;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+
+.loader {
+  color: #ffffff;
+  text-indent: -9999em;
+  margin: 88px auto;
+  position: relative;
+  font-size: 11px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+
+.loader:before {
+  left: -1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.loader:after {
+  left: 1.5em;
+}
+
+@-webkit-keyframes load1 {
+
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+
+@keyframes load1 {
+
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
   }
 }
