@@ -1,0 +1,15 @@
+# https://docs.docker.com/compose/compose-file/compose-file-v3/
+
+services:
+  api:
+    container_name: celeb-api
+    build: ./celeb-api
+    ports:
+      - "8000:8000"
+    restart: always
+  web:
+    container_name: celeb-webapp
+    build: ./celeb-webapp
+    ports:
+      - "3000:3000"
+    restart: always
