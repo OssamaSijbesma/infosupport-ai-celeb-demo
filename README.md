@@ -11,3 +11,8 @@ Navigate to the root directory of the project and run
 ```
 docker-compose up --build
 ```
+
+## ToDo
+
+- Deploy on Azure
+- Aigency Theme
