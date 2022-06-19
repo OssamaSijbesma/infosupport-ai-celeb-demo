@@ -1,11 +1,11 @@
-import InfoSupport from './info-support/InfoSupport';
+import CelebPrediction from './celeb-prediction/CelebPrediction';
 import './App.css';
 
 function App() {
 
   return (
     <div className="App">
-      <InfoSupport />
+      <CelebPrediction />
     </div>
   );
 }

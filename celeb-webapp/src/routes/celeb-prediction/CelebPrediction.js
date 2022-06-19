@@ -2,11 +2,11 @@ import React, {useEffect, useState, useRef} from 'react';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import * as tf from '@tensorflow/tfjs';
 import Webcam from "react-webcam";
-import './InfoSupport.css';
+import './CelebPrediction.css';
 
-import ModalCelebs from '../modal-celebs/ModalCelebs';
+import ModalCelebs from '../../components/modal-celebs/ModalCelebs';
 
-function InfoSupport() {
+function CelebPrediction() {
   const webcamRef = useRef(null);
   const modalRef = useRef(null);
   const [videoWidth] = useState(640);
@@ -153,4 +153,4 @@ function InfoSupport() {
   );
 }
 
-export default InfoSupport;
+export default CelebPrediction;
