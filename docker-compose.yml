@@ -12,4 +12,6 @@ services:
     build: ./celeb-webapp
     ports:
       - "3000:3000"
+    environment:
+      - GENERATE_SOURCEMAP=false
     restart: always

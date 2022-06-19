@@ -29,7 +29,7 @@ const ModalCelebs = forwardRef((props, ref) => {
           <div className='results'>
             {props.results?.map(result => (
               <div className='result' key={result.name}>
-                <img className='img-celeb' src={result.image} />
+                <img className='img-celeb' alt='predicted celeb' src={result.image} />
                 <h3>{result.name}</h3>
                 <p>Look alike factor: <span id="confidence">{result.confidence}%</span></p>
               </div>
