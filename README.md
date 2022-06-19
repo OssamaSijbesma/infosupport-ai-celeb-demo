@@ -1,22 +1,18 @@
-Prerequirements
+# InfoSupport AI Celeb Demo
 
-- Python 3.9
+## Prerequisite
 
-Run the following commands:
+- Docker v3.x
 
-```
-  pip install -r requirements.txt
-  $env:FLASK_APP="app"
-  $env:FLASK_ENV = "development"
-```
+## Instructions
 
-Replace the following files:
-
-- `[venv]/google_images_download/google_images_download.py` with `lib-fixes/google_images_download.py`.
-- `[venv]/keras_vggface/utils.py` with `lib-fixes/utils.py`.
-
-Navigate to the `./src` folder and run:
+Navigate to the root directory of the project and run
 
 ```
-  flask run
+docker-compose up --build
 ```
+
+## ToDo
+
+- Deploy on Azure
+- Aigency Theme

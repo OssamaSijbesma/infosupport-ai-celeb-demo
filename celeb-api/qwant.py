@@ -1,7 +1,7 @@
 import requests
 
 
-def get_celebrity_image_url(name):
+def get_celeb_image(name):
     name = name.encode(encoding='ascii', errors='ignore')
     r = requests.get("https://api.qwant.com/v3/search/images",
                      params={
