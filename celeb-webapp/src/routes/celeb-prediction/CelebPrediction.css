@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Shippori+Antique&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 body {
   background-color: #150444;
@@ -19,7 +19,7 @@ section {
 h1,
 h2,
 h3 {
-  font-family: 'Sacramento', cursive;
+  font-family: 'Poppins', sans-serif;
 }
 
 h1 {
@@ -43,7 +43,7 @@ h3 {
 }
 
 button{
-  font-family: 'Sacramento', cursive;
+  font-family: 'Poppins', sans-serif;
   padding: 12px;
 }
 
@@ -66,7 +66,7 @@ canvas, video{
 
 
 p {
-  font-family: 'Shippori Antique', sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   margin: 8px;
   margin-bottom: 24px;
@@ -143,8 +143,10 @@ a {
   border: 0.2rem solid #fff;
   border-radius: 4px;
   animation: pulsate 1.5s infinite alternate;
-  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3e13fe,
-    0 0 0.8rem #3e13fe, 0 0 2.8rem #3e13fe, inset 0 0 1.3rem #3e13fe;
+  /* box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3e13fe,
+    0 0 0.8rem #3e13fe, 0 0 2.8rem #3e13fe, inset 0 0 1.3rem #3e13fe; */
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #55C3A5,
+      0 0 0.8rem #55C3A5, 0 0 2.8rem #55C3A5, inset 0 0 1.3rem #55C3A5;
 }
 
 .frame-wrapper img {
@@ -152,7 +154,7 @@ a {
 }
 
 @keyframes pulsate {
-  100% {
+  /* 100% {
     box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 5px #3e13fe,
       0 0 23px #3e13fe, 0 0 26px #3e13fe, 0 0 35px #3e13fe, 0 0 40px #3e13fe;
   }
@@ -160,6 +162,15 @@ a {
   0% {
     box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #3e13fe,
       0 0 10px #3e13fe, 0 0 13px #3e13fe, 0 0 16px #3e13fe, 0 0 20px #3e13fe;
+  } */
+  100% {
+    box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 5px #55C3A5,
+      0 0 23px #55C3A5, 0 0 26px #55C3A5, 0 0 35px #55C3A5, 0 0 40px #55C3A5;
+  }
+
+  0% {
+    box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #55C3A5,
+      0 0 10px #55C3A5, 0 0 13px #55C3A5, 0 0 16px #55C3A5, 0 0 20px #55C3A5;
   }
 }
 

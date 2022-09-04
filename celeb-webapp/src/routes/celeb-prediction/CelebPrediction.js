@@ -149,10 +149,11 @@ function CelebPrediction() {
               />
             </div>
             <div className='sidebar'>
-                <img className='logo' alt="logo InfoSupport" src="https://www.infosupport.com/wp-content/uploads/Info-Support-30cm-300DPI-PNG.png" />
+                {/* <img className='logo' alt="logo InfoSupport" src="https://www.infosupport.com/wp-content/uploads/Info-Support-30cm-300DPI-PNG.png" /> */}
+                <img className='logo' alt="logo Aigency" src="https://www.aigency.com/wp-content/uploads/2022/03/Aigency-Logo-Dark@3x.png" />
                 <form>
                     <button className='btn-default' type="button" variant={"contained"} onClick={() => { predictCeleb(); }}
-                >Match <span role="img" aria-label="picture">📸</span></button>
+                >Press the button <span role="img" aria-label="picture">📸</span></button>
                 </form>
                 <div className='loader'style={{ visibility: loading ? "visible" : "hidden" }}>Loading...</div>
             </div>

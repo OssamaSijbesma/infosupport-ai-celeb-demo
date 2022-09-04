@@ -39,7 +39,7 @@ const ModalCelebs = forwardRef((props, ref) => {
               </div>
             ))}
           </div>
-          <button className='btn-modal' onClick={close}>Try Again</button>
+          <button className='btn-modal' onClick={close}>Try Again <span role="img" aria-label="picture">🔁</span></button>
         </section>   
     </Modal>
   );
