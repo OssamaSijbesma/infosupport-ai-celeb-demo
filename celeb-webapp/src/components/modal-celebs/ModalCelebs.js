@@ -9,17 +9,21 @@ const ModalCelebs = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     openModal: () => {
       setIsOpen(true);
-    }
+    },
+    closeModal: () => {
+      setIsOpen(false);
+    },
+    isOpen: () => modalIsOpen
   }));
 
-  function closeModal() {
+  function close() {
     setIsOpen(false);
   }
 
   return (
     <Modal 
       isOpen={modalIsOpen}
-      onRequestClose={closeModal}
+      onRequestClose={close}
       contentLabel="Celebs results modal"
       appElement={document.getElementById('root') || undefined}
       className='modal-celeb'
@@ -35,7 +39,7 @@ const ModalCelebs = forwardRef((props, ref) => {
               </div>
             ))}
           </div>
-          <button className='btn-modal' onClick={closeModal}>Try Again</button>
+          <button className='btn-modal' onClick={close}>Try Again</button>
         </section>   
     </Modal>
   );

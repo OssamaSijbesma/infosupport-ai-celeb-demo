@@ -37,6 +37,7 @@ function CelebPrediction() {
   useEffect(() => {
     tf.ready().then(() => {
       loadModel();
+      document.addEventListener("keydown", keyFunction, false);
     });
   }, []);
 
@@ -45,6 +46,15 @@ function CelebPrediction() {
       predictObject();
     };
   }, [model]);
+
+  function keyFunction(event){
+    if (event.key === "0") {
+      if(modalRef.current.isOpen())
+        modalRef.current.closeModal();
+      else
+        predictCeleb();
+    }
+  }
 
   async function predictObject() {
     const predictions = await model.detect(document.getElementById("cameraOutput"));
