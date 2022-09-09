@@ -35,7 +35,7 @@ async def predict(file: bytes = File()):
     image = cv2.imdecode(image_raw, cv2.IMREAD_COLOR)
     results = predict_celeb(image)[0]
 
-    for name, confidence in results[0:3]:
+    for name, confidence in results[0:4]:
         name = name.split(" ")[-1].strip("'").replace('_', ' ')
         # name = name.encode('unicode_escape').decode('utf-16')
         print(name)

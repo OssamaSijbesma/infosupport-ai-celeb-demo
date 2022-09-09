@@ -5,19 +5,30 @@ import './ModalCelebs.css';
 
 const ModalCelebs = forwardRef((props, ref) => {
   const [modalIsOpen, setIsOpen] = useState(false);
+  let timer = null;
 
   useImperativeHandle(ref, () => ({
     openModal: () => {
       setIsOpen(true);
+      runTimer();
     },
     closeModal: () => {
-      setIsOpen(false);
+      close();
     },
     isOpen: () => modalIsOpen
   }));
 
   function close() {
     setIsOpen(false);
+    clearInterval(timer)
+  }
+
+  async function runTimer() {
+    let seconds = 0;
+    timer = setInterval(() => {
+      seconds += 1;
+      if (seconds > 12) close();
+    }, 1000);
   }
 
   return (
