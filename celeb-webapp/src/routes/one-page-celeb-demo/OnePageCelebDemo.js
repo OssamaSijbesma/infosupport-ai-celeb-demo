@@ -167,7 +167,9 @@ function OnePageCelebDemo() {
           </div>
           <div className='horizontal-flex'>
             <button className='card' type="button" variant={"contained"} onClick={() => { predictCeleb(); }}>
-              <img className='image-button' src='/midjr.png'/>
+              <img className='image-button' src='/sea-otter.png'/>
+              <br/>
+              <span>Press the red button to match</span>
             </button>
             <div className='loader'style={{ visibility: loading ? "visible" : "hidden" }}>Loading...</div>
           </div>
